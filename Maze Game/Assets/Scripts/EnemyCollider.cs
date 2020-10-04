@@ -8,6 +8,7 @@ public class EnemyCollider : MonoBehaviour
 
    [SerializeField] private GameObject _player;
    [SerializeField] private ParticleSystem _particles;
+   [SerializeField] private float _restartBeforTime = 0.2f;
    public static event Action OnDead;
 
     
@@ -16,12 +17,21 @@ public class EnemyCollider : MonoBehaviour
          
            if(other.gameObject.name == "Player")
             {
-              Destroy(_player , 0.08f);
+               _player.GetComponent<SpriteRenderer>().enabled = false;
               _particles.Play();
               
+              StartCoroutine(dead());
               
-              if(OnDead != null)
-                 OnDead();
             }
        }
+
+   IEnumerator dead()
+   { 
+      yield return new WaitForSeconds(_restartBeforTime);
+
+         Debug.Log("Restarting");
+           if(OnDead != null)
+                 OnDead();
+
+   }
 }
