@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform[] _wayPoints;
     [SerializeField] private float _enemySpeed;
     [SerializeField] private float _breakTime = 0.3f;
-    
+    [SerializeField] private AudioSource _moveAud;
     private Transform _currentWayPoint;
     private bool _goingForward;
     private int _size;
@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
             _wpIndx = 1;
             _currentWayPoint = _wayPoints[_wpIndx];
             _goingForward = true;
+            _moveAud.Play();
          }
 
         else if(transform.position == _wayPoints[_wpIndx].position && _wpIndx != _size)
@@ -37,12 +38,14 @@ public class Enemy : MonoBehaviour
                   
                   _wpIndx += 1;
                   _currentWayPoint = _wayPoints[_wpIndx];
+                   _moveAud.Play();
                }
             else
                {
                   
                  _wpIndx -= 1;
-                 _currentWayPoint = _wayPoints[_wpIndx];
+                 _currentWayPoint = _wayPoints[_wpIndx]; 
+                 _moveAud.Play();
                }
          } 
 
@@ -52,6 +55,7 @@ public class Enemy : MonoBehaviour
              _wpIndx -=1;
              _currentWayPoint = _wayPoints[_wpIndx];
               _goingForward = false;
+               _moveAud.Play();
            }
 
        transform.position = Vector2.MoveTowards(transform.position, _currentWayPoint.position, _enemySpeed * Time.deltaTime);

@@ -23,15 +23,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _roughness;
     [SerializeField] private float _fadeInTime;
     [SerializeField] private float _fadeOutTime;
-    
-    
+    [SerializeField] private bool _islevelfive;
+    [SerializeField] private AudioSource _audio;
     public static event Func<bool> OnDash;
+    public bool _canMove{get; set;}
+   
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _dashTime = _startDashTime;
         this.GetComponent<SpriteRenderer>().enabled = true;
         _canDash = true;
+         _canMove = true;
         
     }
 
@@ -40,19 +43,20 @@ public class PlayerMovement : MonoBehaviour
     {
         _hInp = Input.GetAxis("Horizontal");
         _vInp = Input.GetAxis("Vertical");     
-        transform.position = new Vector2(Mathf.Clamp(transform.position.x, -15.5f, 15.5f ), Mathf.Clamp(transform.position.y, -8.75f , 8.27f));
+         if(_islevelfive)
+           transform.position = new Vector2(Mathf.Clamp(transform.position.x, -22.4f, 22.4f ), Mathf.Clamp(transform.position.y, -12.6f , 12.6f));
+        else
+          transform.position = new Vector2(Mathf.Clamp(transform.position.x, -15.5f, 15.5f ), Mathf.Clamp(transform.position.y, -8.75f , 8.27f));
 
         if(Input.GetKeyDown(KeyCode.Space) && _canDash == true)
          {
-
-           
+        
             _isDashButtonDown = true;
             
             
             if(OnDash != null)
                _canDash = OnDash();            
-
-           
+     
            
          }   
                
@@ -75,14 +79,17 @@ public class PlayerMovement : MonoBehaviour
     {
 
       var moveDir = new Vector3(_hInp , _vInp).normalized;
-      _rb.velocity = moveDir * _speed;
+      if(_canMove)
+        {
+          _rb.velocity = moveDir * _speed;
+        }
 
       if(_isDashButtonDown)
          {
 
              Vector3 dashPosition = transform.position + moveDir * _dashSpeed;
              CameraShaker.Instance.ShakeOnce(_shakeMagnitude, _roughness, _fadeInTime, _fadeOutTime);
-             
+             _audio.Play();
               DashProperly();
             
              RaycastHit2D raycasthit = Physics2D.Raycast(transform.position,moveDir,_dashSpeed , _dashMask);

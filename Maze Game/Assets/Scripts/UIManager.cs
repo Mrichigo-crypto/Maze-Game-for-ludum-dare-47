@@ -65,7 +65,7 @@ public class UIManager : MonoBehaviour
       
            
 
-         if(seconds <= 0)
+         if(_time <= 0)
          {
              _stopTimer = true;
              
