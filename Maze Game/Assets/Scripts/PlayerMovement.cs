@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EZCameraShake;
@@ -10,7 +11,9 @@ public class PlayerMovement : MonoBehaviour
     private float _dashTime;
     private int _direction;
     private bool _isDashButtonDown;
-    private bool _canDash = false;
+    private bool _canDash;
+    private int _dashCtr;
+
     [SerializeField] private LayerMask _dashMask;
     [SerializeField] private float _dashSpeed;
     [SerializeField] private float _startDashTime;
@@ -21,11 +24,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _fadeInTime;
     [SerializeField] private float _fadeOutTime;
     
+    
+    public static event Func<bool> OnDash;
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _dashTime = _startDashTime;
         this.GetComponent<SpriteRenderer>().enabled = true;
+        _canDash = true;
+        
     }
 
     
@@ -35,10 +42,18 @@ public class PlayerMovement : MonoBehaviour
         _vInp = Input.GetAxis("Vertical");     
         transform.position = new Vector2(Mathf.Clamp(transform.position.x, -15.5f, 15.5f ), Mathf.Clamp(transform.position.y, -8.75f , 8.27f));
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && _canDash == true)
          {
+
+           
             _isDashButtonDown = true;
             
+            
+            if(OnDash != null)
+               _canDash = OnDash();            
+
+           
+           
          }   
                
         

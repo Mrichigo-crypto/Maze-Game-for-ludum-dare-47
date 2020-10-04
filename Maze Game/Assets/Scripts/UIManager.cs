@@ -9,23 +9,26 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private Slider  _timerSlider;   
     [SerializeField] private TextMeshProUGUI _timeText;
+    [SerializeField] private TextMeshProUGUI _dashLeft;
     [SerializeField] private Color _red;
     [SerializeField] private Color _green;
     [SerializeField] private Image _img;
     [SerializeField] private float _gameTime;
     [SerializeField] private float _time;
+    [SerializeField] private int _totalDash;
     private bool _stopTimer;
     private bool _canRestart;
+    private int _dashCtr;
     public static event Action OnTimeOver;
     
-    void Start()
-    {
-       
-
-    }
+   
    
     void OnEnable()
     {
+    
+        PlayerMovement.OnDash += dashAmount;
+     
+       _dashCtr = _totalDash;
        _stopTimer = false;
  
       _timerSlider.maxValue = _gameTime;
@@ -33,13 +36,25 @@ public class UIManager : MonoBehaviour
            
       _time = _gameTime;
       _img.color = _green;
-    }
 
+      _dashLeft.SetText("Dash Left: " + _totalDash);
+
+
+    }
+    void OnDisable()
+     {
+         
+       PlayerMovement.OnDash -= dashAmount;
+     }
     void Update()
      {
+       Timer();
+          
+     }
 
-         
-           if(_time != 0)
+     void Timer()
+      {
+         if(_time != 0)
              _time -= Time.deltaTime;
             
            else
@@ -75,11 +90,23 @@ public class UIManager : MonoBehaviour
                restartGame();
                _canRestart = false;
              }
-     }
+      }
 
       void restartGame()
        {
             if(OnTimeOver != null)
                OnTimeOver();
        }
+
+     bool dashAmount()
+      {
+          _dashCtr--;
+         
+          _dashLeft.SetText("Dash Left: " + _dashCtr);
+
+          if(_dashCtr <= 0)
+            return false;
+        
+         return true;
+     }
 }
