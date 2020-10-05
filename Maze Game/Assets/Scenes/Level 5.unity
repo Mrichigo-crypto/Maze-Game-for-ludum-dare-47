@@ -5892,6 +5892,10 @@ MonoBehaviour:
   _particles: {fileID: 51384443}
   _restartBeforTime: 0.6
   _deadAud: {fileID: 869557457}
+  _shakeMagnitude: 0
+  _roughness: 0
+  _fadeInTime: 0
+  _fadeOutTime: 0
 --- !u!212 &869557461
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6187,6 +6191,10 @@ MonoBehaviour:
   _particles: {fileID: 51384443}
   _restartBeforTime: 0.6
   _deadAud: {fileID: 892852693}
+  _shakeMagnitude: 0
+  _roughness: 0
+  _fadeInTime: 0
+  _fadeOutTime: 0
 --- !u!114 &892852696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6354,9 +6362,9 @@ MonoBehaviour:
   _red: {r: 0.8901961, g: 0.36118993, b: 0.30588233, a: 1}
   _green: {r: 0.4509804, g: 0.9254902, b: 0.3254902, a: 1}
   _img: {fileID: 847989641}
-  _gameTime: 60
+  _gameTime: 40
   _time: 0
-  _totalDash: 3
+  _totalDash: 1
 --- !u!114 &914046768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7209,7 +7217,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!224 &1400964978
 RectTransform:
@@ -7462,6 +7470,10 @@ MonoBehaviour:
   _particles: {fileID: 51384443}
   _restartBeforTime: 0.6
   _deadAud: {fileID: 1415497237}
+  _shakeMagnitude: 0
+  _roughness: 0
+  _fadeInTime: 0
+  _fadeOutTime: 0
 --- !u!114 &1415497240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8124,6 +8136,10 @@ MonoBehaviour:
   _particles: {fileID: 51384443}
   _restartBeforTime: 0.6
   _deadAud: {fileID: 1677174351}
+  _shakeMagnitude: 0
+  _roughness: 0
+  _fadeInTime: 0
+  _fadeOutTime: 0
 --- !u!114 &1677174354
 MonoBehaviour:
   m_ObjectHideFlags: 0

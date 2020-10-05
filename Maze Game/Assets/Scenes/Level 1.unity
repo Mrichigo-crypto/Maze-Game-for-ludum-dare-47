@@ -9346,7 +9346,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!224 &1608666582
 RectTransform:
@@ -9725,7 +9725,7 @@ MonoBehaviour:
   _red: {r: 0.8901961, g: 0.36118993, b: 0.30588233, a: 1}
   _green: {r: 0.4509804, g: 0.9254902, b: 0.3254902, a: 1}
   _img: {fileID: 2038279179}
-  _gameTime: 40
+  _gameTime: 20
   _time: 0
   _totalDash: 3
 --- !u!1 &1774045221
@@ -10098,6 +10098,10 @@ MonoBehaviour:
   _particles: {fileID: 950130451}
   _restartBeforTime: 0.6
   _deadAud: {fileID: 1899452620}
+  _shakeMagnitude: 3
+  _roughness: 2
+  _fadeInTime: 0.08
+  _fadeOutTime: 0.5
 --- !u!82 &1899452620
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10523,6 +10527,7 @@ MonoBehaviour:
   _roughness: 2
   _fadeInTime: 0.08
   _fadeOutTime: 0.5
+  _islevelfive: 0
   _audio: {fileID: 2110084020}
 --- !u!114 &2110084019
 MonoBehaviour:

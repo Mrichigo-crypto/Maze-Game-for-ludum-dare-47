@@ -321,6 +321,10 @@ MonoBehaviour:
   _particles: {fileID: 1692374039}
   _restartBeforTime: 0.6
   _deadAud: {fileID: 178963823}
+  _shakeMagnitude: 0
+  _roughness: 0
+  _fadeInTime: 0
+  _fadeOutTime: 0
 --- !u!114 &178963818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3664,6 +3668,10 @@ MonoBehaviour:
   _particles: {fileID: 1692374039}
   _restartBeforTime: 0.6
   _deadAud: {fileID: 178963823}
+  _shakeMagnitude: 0
+  _roughness: 0
+  _fadeInTime: 0
+  _fadeOutTime: 0
 --- !u!114 &360503753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5407,6 +5415,7 @@ MonoBehaviour:
   _roughness: 2
   _fadeInTime: 0.08
   _fadeOutTime: 0.5
+  _islevelfive: 0
   _audio: {fileID: 1554240475}
 --- !u!50 &1554240473
 Rigidbody2D:
@@ -10927,6 +10936,10 @@ MonoBehaviour:
   _particles: {fileID: 1692374039}
   _restartBeforTime: 0.6
   _deadAud: {fileID: 178963823}
+  _shakeMagnitude: 0
+  _roughness: 0
+  _fadeInTime: 0
+  _fadeOutTime: 0
 --- !u!212 &1875647266
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11517,7 +11530,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!224 &2113854338
 RectTransform:

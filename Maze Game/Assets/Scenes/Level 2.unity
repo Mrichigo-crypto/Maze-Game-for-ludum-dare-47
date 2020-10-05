@@ -4448,6 +4448,7 @@ MonoBehaviour:
   _roughness: 2
   _fadeInTime: 0.08
   _fadeOutTime: 0.5
+  _islevelfive: 0
   _audio: {fileID: 1406580153}
 --- !u!50 &1406580150
 Rigidbody2D:
@@ -4670,6 +4671,10 @@ MonoBehaviour:
   _particles: {fileID: 1586408755}
   _restartBeforTime: 0.6
   _deadAud: {fileID: 1435830639}
+  _shakeMagnitude: 0
+  _roughness: 0
+  _fadeInTime: 0
+  _fadeOutTime: 0
 --- !u!114 &1435830634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5166,6 +5171,10 @@ MonoBehaviour:
   _particles: {fileID: 1586408755}
   _restartBeforTime: 0.6
   _deadAud: {fileID: 1435830639}
+  _shakeMagnitude: 0
+  _roughness: 0
+  _fadeInTime: 0
+  _fadeOutTime: 0
 --- !u!114 &1460802105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10411,7 +10420,7 @@ MonoBehaviour:
   _red: {r: 0.8901961, g: 0.36118993, b: 0.30588233, a: 1}
   _green: {r: 0.4509804, g: 0.9254902, b: 0.3254902, a: 1}
   _img: {fileID: 602303924}
-  _gameTime: 40
+  _gameTime: 25
   _time: 0
   _totalDash: 3
 --- !u!114 &1719647874
@@ -10867,7 +10876,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!224 &2087316391
 RectTransform:
