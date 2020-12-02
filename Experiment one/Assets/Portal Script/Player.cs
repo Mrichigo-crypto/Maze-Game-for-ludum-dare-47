@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
     private float _horizontal;
     private float _vertical;
     [SerializeField] private float _speed;
-    
+    [SerializeField] private float _rotationSpeed;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -19,12 +20,46 @@ public class Player : MonoBehaviour
     {
         _horizontal = Input.GetAxis("Horizontal");
         _vertical = Input.GetAxis("Vertical");
-        Movement(_horizontal, _vertical);
+       
     }
 
-    void Movement(float horizontal , float vertical)
+    void FixedUpdate()
     {
-        _rb.velocity = new Vector2(horizontal * _speed, vertical * _speed);
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, _rb.velocity.x * -1f));
+       Movement();
+       Rotate();
+        
     }
+
+    void Movement()
+    {
+        _rb.velocity = new Vector2(_horizontal * _speed, _vertical * _speed);
+    }
+
+    void Rotate()
+     {
+       if(_horizontal > 0.1f)
+       {
+        
+         var right = Quaternion.Euler(0,0,-90);
+         transform.rotation = Quaternion.Slerp(transform.rotation , right, Time.deltaTime * _rotationSpeed);
+       }
+    
+      else if(_horizontal < -0.1f)
+      {
+         var left = Quaternion.Euler(0,0,90);
+         transform.rotation = Quaternion.Slerp(transform.rotation , left , Time.deltaTime * _rotationSpeed);
+      }
+        
+      if(_vertical > 0.1f)
+       {
+          var up = Quaternion.Euler(0,0,0);
+         transform.rotation = Quaternion.Slerp(transform.rotation , up, Time.deltaTime * _rotationSpeed);
+       }
+ 
+       else if(_vertical < -0.1f)
+      {
+         var down = Quaternion.Euler(0,0,180);
+         transform.rotation = Quaternion.Slerp(transform.rotation , down , Time.deltaTime * _rotationSpeed);
+      }
+     }
 }
