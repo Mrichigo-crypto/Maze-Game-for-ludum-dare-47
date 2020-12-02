@@ -24,7 +24,7 @@ public class EnemyCollider : MonoBehaviour
             {
                _player.GetComponent<SpriteRenderer>().enabled = false;
                _player.GetComponent<PlayerMovement>()._canMove = false;
-                CameraShaker.Instance.ShakeOnce(_shakeMagnitude, _roughness, _fadeInTime, _fadeOutTime);
+                
                _deadAud.Play();
               _particles.Play();
               
